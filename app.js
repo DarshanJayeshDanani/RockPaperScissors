@@ -2,7 +2,7 @@ let userScore = 0;
 let computeScore = 0;
 const userScore_span = document.getElementById("userScore");
 const computerScore_span = document.getElementById("computerScore")
-const scoreBoard_div = document.querySelector(".scoreBoard")
+//const scoreBoard_div = document.querySelector(".scoreBoard")
 const result_div_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("rock");
 const paper_div = document.getElementById("paper");
@@ -12,25 +12,20 @@ main();
 
 function main() {
     rock_div.addEventListener('click', function () {
-        console.log("User Choice: Rock");
         game("rock");
     });
 
     paper_div.addEventListener('click', function () {
-        console.log("User Choice: Paper");
         game("paper");
     });
 
     scissors_div.addEventListener('click', function () {
-        console.log("User Choice: Scissors");
         game("scissor");
     });
 }
 
 function game(userChoice) {
     const computerChoice = getComputerChoice();
-    console.log("Computer Choice: " + computerChoice)
-    console.log(userChoice+computerChoice)
     switch (userChoice+computerChoice) {
         case "rockscissor": case "paperrock": case "scissorpaper":
             win(userChoice, computerChoice)
@@ -54,17 +49,32 @@ function getComputerChoice() {
 function win(userChoice, computerChoice) {
     userScore++;
     userScore_span.innerHTML = userScore;
+    const userChoice_div = document.getElementById(userChoice);
     result_div_p.innerHTML = capitalizeFirstLetter(userChoice) + " beats " + capitalizeFirstLetter(computerChoice) + ". You win!";
+    userChoice_div.classList.add("greenGlow");
+    setTimeout(function() {
+        userChoice_div.classList.remove("greenGlow")
+    }, 300);
 }
 
 function lose(userChoice, computerChoice) {
     computeScore++;
     computerScore_span.innerHTML = computeScore;
+    const userChoice_div = document.getElementById(userChoice);
     result_div_p.innerHTML = capitalizeFirstLetter(userChoice) + " loses to " + capitalizeFirstLetter(computerChoice) + ". You Lose!";
+    userChoice_div.classList.add("redGlow");
+    setTimeout(function() {
+        userChoice_div.classList.remove("redGlow")
+    }, 300);
 }
 
 function draw (userChoice, computerChoice) {
+    const userChoice_div = document.getElementById(userChoice);
     result_div_p.innerHTML = capitalizeFirstLetter(userChoice) + " equals " + capitalizeFirstLetter(computerChoice) + ". Its a draw!";
+    userChoice_div.classList.add("grayGlow");
+    setTimeout(function() {
+        userChoice_div.classList.remove("grayGlow")
+    }, 300);
 }
 
 function capitalizeFirstLetter(word) {
