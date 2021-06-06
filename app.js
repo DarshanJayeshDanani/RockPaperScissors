@@ -11,17 +11,11 @@ const scissors_div = document.getElementById("scissors");
 main();
 
 function main() {
-    rock_div.addEventListener('click', function () {
-        game("rock");
-    });
+    rock_div.addEventListener('click',  () => game("rock"));
 
-    paper_div.addEventListener('click', function () {
-        game("paper");
-    });
+    paper_div.addEventListener('click', () => game("paper"));
 
-    scissors_div.addEventListener('click', function () {
-        game("scissor");
-    });
+    scissors_div.addEventListener('click', () => game("scissor"));
 }
 
 function game(userChoice) {
@@ -52,9 +46,7 @@ function win(userChoice, computerChoice) {
     const userChoice_div = document.getElementById(userChoice);
     result_div_p.innerHTML = capitalizeFirstLetter(userChoice) + " beats " + capitalizeFirstLetter(computerChoice) + ". You win!";
     userChoice_div.classList.add("greenGlow");
-    setTimeout(function() {
-        userChoice_div.classList.remove("greenGlow")
-    }, 300);
+    setTimeout(() => userChoice_div.classList.remove("greenGlow"), 300);
 }
 
 function lose(userChoice, computerChoice) {
@@ -63,18 +55,14 @@ function lose(userChoice, computerChoice) {
     const userChoice_div = document.getElementById(userChoice);
     result_div_p.innerHTML = capitalizeFirstLetter(userChoice) + " loses to " + capitalizeFirstLetter(computerChoice) + ". You Lose!";
     userChoice_div.classList.add("redGlow");
-    setTimeout(function() {
-        userChoice_div.classList.remove("redGlow")
-    }, 300);
+    setTimeout(() => userChoice_div.classList.remove("redGlow"), 300);
 }
 
 function draw (userChoice, computerChoice) {
     const userChoice_div = document.getElementById(userChoice);
     result_div_p.innerHTML = capitalizeFirstLetter(userChoice) + " equals " + capitalizeFirstLetter(computerChoice) + ". Its a draw!";
     userChoice_div.classList.add("grayGlow");
-    setTimeout(function() {
-        userChoice_div.classList.remove("grayGlow")
-    }, 300);
+    setTimeout(() => userChoice_div.classList.remove("grayGlow"), 300);
 }
 
 function capitalizeFirstLetter(word) {
