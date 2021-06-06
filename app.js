@@ -2,7 +2,6 @@ let userScore = 0;
 let computeScore = 0;
 const userScore_span = document.getElementById("userScore");
 const computerScore_span = document.getElementById("computerScore")
-//const scoreBoard_div = document.querySelector(".scoreBoard")
 const result_div_p = document.querySelector(".result > p");
 const rock_div = document.getElementById("rock");
 const paper_div = document.getElementById("paper");
